@@ -223,6 +223,11 @@ export default class MentionSuggestions extends Component {
       this.props.entityMutability,
     );
     this.props.store.setEditorState(newEditorState);
+
+    // Notify possible callback that we have selected an option
+    if (this.props.onMentionSelect) {
+      this.props.onMentionSelect(mention);
+    }
   };
 
   onMentionFocus = (index) => {
